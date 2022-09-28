@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es-es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        * {
+            margin: 0;
+        }
+        #fondoPantalla{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="fondoPantalla"></div>
+        <script>
+        let color1 = parseInt(Math.random()*256); /* Estas variables indican que colores se mostrarán en el fondo.*/
+        let color2 = parseInt(Math.random()*256);
+        let color3 = parseInt(Math.random()*256);
+
+        document.write(`<div id="fondoPantalla" style="background-color: RGB(${color1}, ${color2}, ${color3})" ></div>`); /* El document.write nos muestra el fondo de la página de un color diferente cada vez que la refrescamos. */
+    </script>
+    </body>
+</html>
