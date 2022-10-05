@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 8</title>
+  </head>
+  <body>
+    <script>
+      let alumnos = [[], [], []];
+      for (let i = 0; i < 3; i++) {
+        alumnos[i][0] = prompt(`Introduce el nombre del alumno ${i}`);
+        for (let j = 1; j < 6; j++) {
+          alumnos[i][j] = prompt(`Introduce la nota ${j} de ${alumnos[i][0]}`);
+        }
+      }
+      for (let i = 0; i < 3; i++) {
+        document.write(`<h1>Notas de ${alumnos[i][0]}</h1>`);
+        for (let j = 1; j < 6; j++) {
+          document.write(`Nota ${j} -> ${alumnos[i][j]} `);
+        }
+      }
+    </script>
+  </body>
+</html>
