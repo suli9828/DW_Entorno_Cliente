@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Cifrado Complejo</title>
+  </head>
+  <body>
+    <script>
+      let clave = prompt("Introduce la clave de cifrado (1 - 1000000).");
+      if (!isNaN(clave)) {
+        while (clave < 1 || clave > 1000000) {
+          clave = parseInt(
+            prompt("La clave debe ser un número entero entre 1 y 1000000.")
+          );
+        }
+
+        let texto = prompt("Introduce el texto a cifrar.");
+        let textoCifrado = "";
+
+        let j = 0;
+        for (let i = 0; i < texto.length; i++) {
+          let caracteres = parseInt(clave.charAt(j));
+          let suma = texto.charCodeAt(i) + caracteres;
+
+          j++;
+          if (j == clave.length) {
+            j = 0;
+          }
+
+          if (texto.charAt(i) == "z" || texto.charAt(i) == "Z") {
+            textoCifrado += String.fromCharCode(suma - 26);
+          } else {
+            if (suma > 122 || (suma > 90 && suma < 97)) {
+              textoCifrado += String.fromCharCode(suma - 26);
+            } else {
+              textoCifrado += String.fromCharCode(suma);
+            }
+          }
+        }
+
+        document.write(textoCifrado);
+      }
+    </script>
+  </body>
+</html>
