@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 12</title>
+  </head>
+  <body>
+    <script>
+      let exp1 =
+        /^([A-zÁÉÍÓÚáéíóúÑñ]+\s[A-zÁÉÍÓÚáéíóúÑñ]+\s[A-zÁÉÍÓÚáéíóúÑñ]+)$/;
+      do {
+        var nombre = prompt("22 - Introduce tu nombre y apellidos");
+      } while (!exp1.test(nombre));
+      let exp2 =
+        /(^0[1-9]|^[1-2][0-9]|^3[0-2])\/(0[1-9]|1[0-2])\/(19[0-9]{2}$|20[0-1][0-9]$|202[0-3]$)/;
+      do {
+        var fecha = prompt("23 - Tu fecha de nacimiento");
+      } while (!exp2.test(fecha));
+      let exp3 =
+        /^[A-z0-9ÁÉÍÓÚÜÇÑáéíóúüçñ\._%\+\-]+@[A-z0-9ÁÉÍÓÚÜÇÑáéíóúüçñ\-]+(\.[A-z0-9ÁÉÍÓÚÜÇÑáéíóúüçñ\-]+)?\.[A-z]{2,}$/;
+      do {
+        var email = prompt("24 - Introduce tu email.");
+      } while (!exp3.test(email));
+      let exp4 =
+        /^(http:\/\/|https:\/\/)?www\.[A-z\.]+\.[a-z]{2,}(\/[A-z\/]+\/)?$/;
+      do {
+        var url = prompt("25 - Introduce tu url.");
+      } while (!exp4.test(url));
+    </script>
+  </body>
+</html>
