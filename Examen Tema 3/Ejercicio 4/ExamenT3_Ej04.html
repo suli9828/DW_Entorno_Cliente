@@ -7,11 +7,10 @@
     <title>Ejercicio 4</title>
   </head>
   <body>
-    <p id="refran"></p>
     <script>
       function muestraRefran(array) {
         let i = parseInt(Math.random() * array.length);
-        document.getElementById('refran').innerHTML = array[i];
+        document.write(array[i] + '<br>');
       }
 
       let refran = '';
