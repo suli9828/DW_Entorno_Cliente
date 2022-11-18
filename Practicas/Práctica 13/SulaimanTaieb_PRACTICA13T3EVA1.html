@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="es-es">
   <head>
-    <title>Práctica 13</title>
-    <script src="../js/buscaminas.js"></script>
-    <link rel="stylesheet" href="../css/buscaminas.css" />
+    <title>Práctica 14</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      #fondoPantalla {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+      }
+    </style>
   </head>
   <body>
-    <div id="tablero"></div>
+    <div id="fondoPantalla"></div>
     <script>
-      /*La variable tablero contiene el array bidimensional que mostrará el tablero. */
-      let tablero = generarTablero(5, 6);
-      /*Después de generar el array, se generan y colocan las minas dentro. */
-      insertaMinas(tablero);
-      /*Cuando las minas están colocadas, llamamos a esta función para guardar en cada casilla el 
-      número de minas que hay alrededor.*/
-      minasCerca(tablero);
-      /*Y con la siguiente función se mostraría el tablero. */
-      dibujaTablero(tablero);
+      function fondoAleatorio() {
+        let color1 = parseInt(Math.random() * 256);
+        let color2 = parseInt(Math.random() * 256);
+        let color3 = parseInt(Math.random() * 256);
+        let mixColor = `rgb(${color1},${color2},${color3})`;
+
+        document.getElementById("fondoPantalla").style.background = mixColor;
+      }
+      setInterval(fondoAleatorio, 2000);
     </script>
   </body>
 </html>
