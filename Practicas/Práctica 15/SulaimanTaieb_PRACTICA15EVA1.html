@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 15</title>
+  </head>
 
+  <body>
+    <script>
+      /* Clase ordenador */
+      function Ordenador(
+        marca,
+        modelo,
+        ram = 4,
+        capacidad = 512,
+        pulgadas = 17
+      ) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ram = ram;
+        this.capacidad = capacidad;
+        this.pulgadas = pulgadas;
+
+        this.toString = function () {
+          let toString = '';
+          for (let i in this) {
+            if (typeof this[i] != 'function') {
+              toString += `${i} --> ${this[i]}, `;
+            }
+          }
+          return toString;
+        };
+      }
+
+      /* Clase portatil */
+      function Portatil(
+        marca,
+        modelo,
+        ram = 4,
+        capacidad = 256,
+        pulgadas = 13,
+        autonomia = 4
+      ) {
+        /* Herencia de ordenador */
+        this.prototype = new Ordenador(marca, modelo, ram, capacidad, pulgadas);
+        this.autonomia = autonomia;
+
+        this.toString = function () {
+          let toString = '';
+          for (let i in this) {
+            if (typeof this[i] != 'function') {
+              toString += `${i} --> ${this[i]}, `;
+            }
+          }
+          return toString;
+        };
+      }
+
+      let ordenador1 = new Ordenador('HP', 'Primero');
+      let ordenador2 = new Ordenador('Lenovo', 'P40', 16, 2048, 20);
+
+      let portatil1 = new Portatil('Sony', 'Caracola');
+      let portatil2 = new Portatil('Alienware', 'Gaming', 32, 512, 17, 10);
+
+      console.log(ordenador1.toString());
+      console.log(ordenador2.toString());
+      console.log(portatil1.toString());
+      console.log(portatil2.toString());
+    </script>
+  </body>
+</html>
