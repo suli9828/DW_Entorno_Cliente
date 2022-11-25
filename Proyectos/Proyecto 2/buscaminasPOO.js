@@ -69,8 +69,8 @@ function Buscaminas() {
     do {
       minas = parseInt(prompt('Introduce las minas del tablero.'));
     } while (
-      minas < (this.getN_Filas() * this.getN_Columnas()) / 3 ||
-      minas > ((this.getN_Filas() * this.getN_Columnas()) / 3) * 2
+      minas < 2 ||
+      minas >= (this.getN_Filas() * this.getN_Columnas()) / 2
     );
     this.nMinas = minas;
   };
