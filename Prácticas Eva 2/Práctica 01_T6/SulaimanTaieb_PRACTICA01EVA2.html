@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 1</title>
+  </head>
+  <body>
+    <!--Cuando pulsamos este botón llama a la función google() -->
+    <button onclick="google();">¡¡Nos vamos!!</button>
+  </body>
+  <script>
+    /*Lo que hace esta función es cambiar el enlace a duckduckgo.com */
+    function duckDuck() {
+      location.href = 'https://www.duckduckgo.com';
+    }
+    /*Lo que hace esta función es cambiar el enlace a google.com */
+    function google() {
+      location.href = 'https://www.google.com';
+    }
+    /*Este intervalo llama a la función duckDuck() cuando pasan 5 segundos. */
+    setInterval(duckDuck, 5000);
+  </script>
+</html>
