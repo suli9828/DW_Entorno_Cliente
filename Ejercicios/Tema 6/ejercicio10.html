@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 10 y 11</title>
+  </head>
+  <body>
+    <main id="principal">
+      <p>Uno</p>
+      <p>Dos</p>
+      <p>Tres</p>
+    </main>
+    <p>Cuatro</p>
+    <p>Cinco</p>
+    <script>
+      /* Ejercicio 10 */
+      for (parrafo of document
+        .getElementById('principal')
+        .getElementsByTagName('p')) {
+        console.log(parrafo.innerText);
+      }
+
+      /* Ejercicio 11 */
+      console.log(document.getElementsByTagName('p').length);
+    </script>
+  </body>
+</html>
