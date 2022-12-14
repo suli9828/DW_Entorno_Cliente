@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejercicio 1</title>
   </head>
   <body>
@@ -30,15 +33,13 @@
       if (navigator.onLine) {
         document.getElementById('parrafo').innerHTML += 'no ';
       }
-      document.getElementById('parrafo').innerHTML +=
-        'está trabajando online. <br>';
+      document.getElementById('parrafo').innerHTML += 'está trabajando online. <br>';
 
       document.getElementById('parrafo').innerHTML += 'El navegador ';
       if (!navigator.userAgent.startsWith('Gecko')) {
         document.getElementById('parrafo').innerHTML += 'no ';
       }
-      document.getElementById('parrafo').innerHTML +=
-        'usa el motor Gecko. <br>';
+      document.getElementById('parrafo').innerHTML += 'usa el motor Gecko. <br>';
     </script>
   </body>
 </html>

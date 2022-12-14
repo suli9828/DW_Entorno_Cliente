@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejercicio 13</title>
+    <title>Ejercicio 16</title>
   </head>
   <body>
     <ul>
@@ -20,7 +20,13 @@
       <li class="legumbre">Habas</li>
     </ul>
     <script>
-      console.log(document.querySelector('li.legumbre:nth-of-type(7)').innerText);
+      let ul = document.getElementsByTagName('li');
+      for (li of ul) {
+        if (li.getAttribute('class') == 'carne') {
+          li.removeAttribute('class');
+        }
+        console.log(li.getAttribute('class') + ' --> ' + li.innerHTML);
+      }
     </script>
   </body>
 </html>
