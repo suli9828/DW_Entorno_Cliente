@@ -20,7 +20,14 @@
       <li class="legumbre">Habas</li>
     </ul>
     <script>
-      console.log(document.querySelector('li.legumbre:nth-of-type(7)').innerText);
+      console.log(
+        document.querySelector('li.legumbre:nth-of-type(7)').innerText
+      );
+    </script>
+    <p id="resultado"></p>
+    <script>
+      let miVerdura = document.querySelectorAll('ul li')[6];
+      document.getElementById('resultado').innerHTML = miVerdura.textContent;
     </script>
   </body>
 </html>
