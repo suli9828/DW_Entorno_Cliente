@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 22</title>
+    <style>
+      .fondoGris {
+        background-color: rgb(156, 156, 156);
+      }
+      .textoRosa {
+        color: pink;
+      }
+      .italic {
+        font-style: italic;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">Transformar</div>
+    <button onclick="darFormato()">Dar formato</button>
+    <button onclick="quitarFormato()">Quitar formato</button>
+    <button onclick="alternarFormato()">Alternar formato</button>
+    <script>
+      let s = document.getElementById('div');
+      function darFormato() {
+        s.classList.add('fondoGris', 'italic', 'textoRosa');
+      }
+
+      function quitarFormato() {
+        s.classList.remove('fondoGris', 'italic', 'textoRosa');
+      }
+
+      function alternarFormato() {
+        s.classList.toggle('fondoGris');
+        s.classList.toggle('textoRosa');
+        s.classList.toggle('italic');
+      }
+    </script>
+  </body>
+</html>
