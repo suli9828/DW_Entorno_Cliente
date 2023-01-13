@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 26</title>
+  </head>
+  <body>
+    <main id="principal">
+      <p>Soy el primer párrafo</p>
+      <p>Soy el segundo párrafo</p>
+      <p>Soy el tercer párrafo</p>
+    </main>
+    <script>
+      let main = document.getElementById('principal');
+      let nuevoP = document.createElement('p');
+      nuevoP.innerText = 'Soy el cuarto párrafo.';
+      nuevoP.style.color = 'blue';
+      nuevoP.style.fontStyle = 'italic';
+      nuevoP.style.fontWeight = 'bold';
+      main.appendChild(nuevoP);
+
+      for (let i = 4; i >= 1; i--) {
+        let p = document.querySelector('#principal p:first-child');
+        main.removeChild(p);
+        main.insertBefore(
+          p,
+          document.querySelector('#principal p:nth-child(' + i + ')')
+        );
+      }
+    </script>
+  </body>
+</html>
