@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Práctica 5</title>
+  </head>
+  <body>
+    <section id="seccion1">
+      <h1>Título</h1>
+      <p>
+        Esto es un ejemplo de documento <strong>DOM</strong> Visión en árbol
+      </p>
+    </section>
+    <section id="seccion2">
+      <p>Este solo es un texto de prueba.</p>
+    </section>
+    <script>
+      function muestraElementos(root) {
+        console.log(
+          'Elemento ' + root.nodeName
+        ); /* Primero se muestra el elemento actual.*/
 
+        if (root.attributes.length > 0) {
+          console.log('Atributos de ' + root.nodeName + ':');
+          for (atr of root.attributes) {
+            console.log(atr.name + ' => ' + atr.value);
+          }
+        }
+        /* Si el elemento actual tiene hijos, también muestra su información.*/
+        if (root.children.length > 0) {
+          console.log('Hijos de ' + root.nodeName + ':');
+          for (child of root.children) {
+            console.log(child.nodeName);
+          }
+          console.log(' ');
+          /* Se muestra la información de cada hijo.*/
+          for (child of root.children) {
+            muestraElementos(child);
+            console.log(' ');
+          }
+        }
+      }
+
+      let html = document.getElementsByTagName('html')[0];
+      muestraElementos(html);
+    </script>
+  </body>
+</html>
