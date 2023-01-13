@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 4</title>
+  </head>
+  <body>
+    <main id="texto">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum,
+        officiis! Similique, accusamus perspiciatis temporibus possimus cumque
+        explicabo molestias ad cum nemo unde harum minima, doloribus, tempore ut
+        quos eos consectetur.
+      </p>
+      <p>
+        Eos iste aperiam doloremque, officiis maiores atque? Nulla, fugit. Odit
+        vero, ipsa quae neque ullam, ab culpa aspernatur voluptas, qui laborum
+        reprehenderit soluta reiciendis exercitationem autem magnam ut nobis
+        ducimus?
+      </p>
+      <p>
+        Ratione nobis nisi eaque natus illo temporibus accusamus, sapiente
+        commodi sequi eligendi ad ipsam est nulla a autem, quas animi earum
+        obcaecati cum repellat voluptatem vero sed dicta reiciendis. Maiores.
+      </p>
+      <p>
+        Esse suscipit consequuntur id laboriosam? Tenetur, totam minus eos
+        perspiciatis error reiciendis dolor eveniet porro recusandae ipsam
+        cupiditate qui voluptas facilis velit vel asperiores libero! Soluta
+        maiores incidunt saepe quidem!
+      </p>
+      <p>
+        Laborum libero, vel quaerat dolorum dicta labore eveniet, saepe culpa
+        repudiandae reiciendis, exercitationem distinctio minus eum illo
+        aperiam. Esse, atque. Eligendi delectus accusantium autem nesciunt, hic
+        magni expedita. Eligendi, sequi?
+      </p>
+    </main>
+    <script>
+      function cuentaPalabras(p) {
+        let espacioAntes =
+          /^ /; /* Evita los espacios al principio del párrafo.*/
+        let espacioDespues = / $/; /* Evita los espacios al final del párrafo.*/
+        let muchosEspacios = /[ ]+/g; /* Evita muchos espacios juntos. */
+        p.innerText.replace(espacioAntes, '');
+        p.innerText.replace(espacioDespues, '');
+        p.innerText.replace(muchosEspacios, ' ');
 
+        let espacios = 0;
+        for (let i = 0; i < p.innerText.length; i++) {
+          /* Se recorre el texto caracter a caracter.*/
+          if (p.innerText[i] == ' ') {
+            /* Comprueba si es un espacio o no.*/
+            espacios++;
+          }
+        }
+        return espacios + 1;
+      }
+
+      let main = document.getElementById('texto');
+
+      let palabrasTotal = 0; /* Esta variable va a contener el número total de palabras.*/
+      for (p of main.children) {
+        palabrasTotal += cuentaPalabras(p);
+      }
+
+      let numPalabras = document.createElement('p');
+      numPalabras.innerText = 'Hay ' + palabrasTotal + ' palabras en total.';
+      numPalabras.style.fontStyle = 'italic';
+      numPalabras.style.fontWeight = 'bold';
+      numPalabras.style.fontSize = '2em';
+      main.insertBefore(
+        numPalabras,
+        document.querySelector('#texto p:first-child')
+      );
+    </script>
+  </body>
+</html>
