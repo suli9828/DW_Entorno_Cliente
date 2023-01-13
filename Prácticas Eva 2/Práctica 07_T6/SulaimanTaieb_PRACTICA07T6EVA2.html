@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 7</title>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <div>
+      <p id="temporizador"></p>
+    </div>
+    <script>
+      function timer() {
+        /* Si le pasamos un solo argumento a la función se comprueba que sea mayor que 0 y lo convierte en formato min:seg*/
+        if (timer.arguments.length == 1) {
+          if (timer.arguments[0] < 0) {
+            document.getElementById('temporizador').innerHTML =
+              'Error. El tiempo insertado no es correcto.';
+            return false;
+          } else {
+            var segundos = timer.arguments[0];
+            var minutos = 0;
+          }
+          /* Si le pasamos dos argumentos se comprueba que sea mayor que 0 y lo convierte en formato min:seg*/
+        } else if (timer.arguments.length == 2) {
+          if (timer.arguments[0] < 0 || timer.arguments[1] < 0) {
+            /* Si alguno de los datos es menor que 0 o no es correcto se muestra un error.*/
+            document.getElementById('temporizador').innerHTML =
+              'Error. El tiempo insertado no es correcto.';
+            return false;
+          } else {
+            var minutos = timer.arguments[0];
+            var segundos = timer.arguments[1];
+          }
+        }
 
+        /* Mientras que los segundos sean mayores que 60, se irán sumando minutos. */
+        while (segundos >= 60) {
+          minutos++;
+          segundos -= 60;
+        }
+
+        /* Si los segundos son menores que 10 se pone un cero antes para que se muestre mejor.*/
+        if (segundos < 10) {
+          document.getElementById('temporizador').innerHTML =
+            minutos + ':0' + segundos;
+        } else {
+          document.getElementById('temporizador').innerHTML =
+            minutos + ':' + segundos;
+        }
+
+        const intervalo = setInterval(function () {
+          /* Si los minutos y segundos están en cero, el intervalo se detiene.*/
+          if (minutos == 0 && segundos == 0) {
+            clearInterval(intervalo);
+          } else if (minutos >= 0) {
+            /* Si los segundos son mayores que 0 va restando segundos.*/
+            if (segundos > 0) {
+              --segundos;
+              /* Si son iguales a 0, quita 1 min y pone 59 segs.*/
+            } else if (segundos == 0) {
+              --minutos;
+              segundos = 59;
+            }
+
+            /* Se muestra por pantalla el resultado.*/
+            if (segundos < 10) {
+              document.getElementById('temporizador').innerHTML =
+                minutos + ':0' + segundos;
+            } else {
+              document.getElementById('temporizador').innerHTML =
+                minutos + ':' + segundos;
+            }
+          }
+        }, 1000);
+      }
+      timer(30);
+    </script>
+  </body>
+</html>
