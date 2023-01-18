@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 5</title>
+  </head>
+  <body>
+    <p id="parrafo">Aquí aparecerán las coordenadas client</p>
+    <p id="parrafo2">Aquí aparecerán las coordenadas screen</p>
+    <script>
+      document.addEventListener('mousemove', function (ev) {
+        document.getElementById('parrafo').innerText =
+          ev.clientX + ', ' + ev.clientY + ' CLIENT';
+      });
+      document.addEventListener('mousemove', function (ev) {
+        document.getElementById('parrafo2').innerText =
+          ev.screenX + ', ' + ev.screenY + ' SCREEN';
+      });
+    </script>
+  </body>
+</html>
