@@ -1,1 +1,35 @@
-
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 8</title>
+    <link rel="stylesheet" href="./estilos.css" />
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <main>
+      <div>
+        <input type="text" id="texto" />
+        <button onclick="addFila(fila1)">Añadir fila</button>
+      </div>
+      <br />
+      <table>
+        <thead>
+          <tr>
+            <th>Contenido</th>
+            <th>Operación1</th>
+            <th>Operación2</th>
+          </tr>
+        </thead>
+        <tbody id="bodyTabla">
+          <tr>
+            <td id="fila1">Ejemplo de contenido</td>
+            <td><button onclick="mayusculas('fila1')">Mayúsculas</button></td>
+            <td>
+              <button onclick="formatoChachi('fila1')">Formato chachi</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
