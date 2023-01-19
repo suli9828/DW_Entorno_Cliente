@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 3</title>
+  </head>
+  <body>
+    <p>Uno</p>
+    <p>Dos</p>
+    <p>Tres</p>
+    <p>Cuatro</p>
+    <script>
+      let parrafos = document.querySelectorAll('p');
+      for (let parrafo of parrafos) {
+        parrafo.addEventListener('click', () => {
+          alert(parrafo.textContent);
+        });
+      }
+      let p5 = document.createElement('p');
+      p5.innerText = 'Cinco';
+      p5.addEventListener('click', () => {
+        alert(p5.textContent);
+      });
+      document.body.appendChild(p5);
+    </script>
+  </body>
+</html>
