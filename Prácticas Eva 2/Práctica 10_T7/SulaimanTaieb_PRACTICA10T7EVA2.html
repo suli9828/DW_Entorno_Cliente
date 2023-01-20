@@ -1,1 +1,42 @@
-
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 10</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+      p {
+        font-size: 5em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="fondoImagen">
+      <p><strong>Alt+F12</strong> para cambiar el fondo!</p>
+    </main>
+    <script>
+      /*Le decimos que al pulsar una determinada tecla se añade un evento a la página.*/
+      document.addEventListener('keydown', function (ev) {
+        let main = document.getElementById('fondoImagen');
+        /* Si las teclas pulsadas en conjunto son ALT+F12*/
+        if (ev.altKey && ev.key == 'F12') {
+          /* Que se genere una imagen aleatoria desde el enlace que hemos puesto.*/
+          main.style.background = "url('https://source.unsplash.com/random')";
+          main.style.backgroundSize = 'cover';
+        }
+      });
+    </script>
+  </body>
+</html>
