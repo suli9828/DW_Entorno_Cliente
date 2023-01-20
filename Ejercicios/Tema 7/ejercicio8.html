@@ -8,16 +8,16 @@
   </head>
   <body>
     <script>
-      document.addEventListener('button', function (ev) {
-        if (ev.button(0)) {
+      document.addEventListener('mousedown', function (ev) {
+        if (ev.button == 0) {
           console.log('Se ha pulsado el botón principal del ratón.');
-        } else if (ev.button(1)) {
+        } else if (ev.button == 1) {
           console.log('Se ha pulsado el botón central del ratón.');
-        } else if (ev.button(2)) {
+        } else if (ev.button == 2) {
           console.log('Se ha pulsado el botón secundario del ratón.');
-        } else if (ev.button(3)) {
+        } else if (ev.button == 3) {
           console.log('Se ha pulsado el cuarto botón del ratón.');
-        } else if (ev.button(4)) {
+        } else if (ev.button == 4) {
           console.log('Se ha pulsado el quinto botón del ratón.');
         }
       });
