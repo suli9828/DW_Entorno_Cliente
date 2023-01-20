@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 11</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      div {
+        height: 50%;
+        width: 50%;
+        border: 4px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div"></div>
+    <script>
+      let div = document.getElementById('div');
 
+      /* Este evento cambia el color cuando el ratón entra en el cuadrado.*/
+      div.addEventListener('mouseenter', function () {
+        div.style.backgroundColor = 'green';
+      });
+
+      /* Este evento quita el fondo cuando el ratón sale del cuadrado.*/
+      div.addEventListener('mouseleave', function () {
+        div.style.background = 'none';
+      });
+
+      /* Este evento cambia el color dependiendo de que botón del ratón se pulse.*/
+      div.addEventListener('mousedown', function (ev) {
+        /* SI el botón que se pulsa es el principal, cambia el color a rojo.*/
+        if (ev.button == 0) {
+          div.style.backgroundColor = 'red';
+
+          /* SI el botón que se pulsa es el secundario, cambia el color a azul.*/
+        } else if (ev.button == 2) {
+          div.style.backgroundColor = 'blue';
+        }
+      });
+
+      /* Este evento cambia el color a verde cuando se suelta el botón del ratón.*/
+      div.addEventListener('mouseup', function () {
+        div.style.background = 'green';
+      });
+
+      /* Se desactiva el menú que sale cuando se pulsa el botón derecho del ratón por defecto.*/
+      div.oncontextmenu = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>
