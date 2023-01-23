@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 12</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      div {
+        height: 50%;
+        width: 50%;
+        border: 4px dashed black;
+        border-radius: 0px;
+        padding: 10px;
+        overflow-y: scroll;
+      }
+      div p {
+        text-align: justify;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parrafo">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+        libero consequuntur quis veritatis molestias a itaque sint error dolores
+        at adipisci velit rerum, non sapiente provident delectus, nostrum
+        repudiandae possimus. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Dolorum reiciendis ad facere recusandae quia minima unde deserunt
+        quos, pariatur perferendis! Totam cupiditate vero reiciendis facere
+        officiis qui voluptatibus odio distinctio. Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Hic debitis animi fugiat odit
+        dignissimos. Aliquid, aut accusamus veritatis quae ut, ab rem id officia
+        praesentium est, exercitationem laudantium assumenda excepturi? Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Architecto culpa
+        omnis provident suscipit autem ad incidunt fugit dicta earum animi
+        consectetur libero reprehenderit, tempore repudiandae, voluptas adipisci
+        porro molestiae atque? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Doloribus ducimus enim delectus, quos maiores alias
+        beatae perspiciatis, ipsum recusandae maxime laboriosam temporibus?
+        Magnam dolorum, modi alias sunt maiores fugiat qui. Lorem ipsum dolor
+        sit, amet consectetur adipisicing elit. Nesciunt expedita alias,
+        quisquam tenetur dignissimos saepe debitis earum quia illo aliquid
+        veniam quos, ipsam nobis amet deserunt provident iste dolorum sint?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, et
+        provident! Molestiae repudiandae illo ut saepe pariatur, harum
+        distinctio laboriosam nisi consequuntur rerum numquam officia rem veniam
+        eius expedita consectetur. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Corrupti, cupiditate laudantium nulla nostrum nihil
+        libero illum ipsa nam, voluptates magni est neque quam quisquam nisi
+        laborum, deserunt excepturi quaerat tempore. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Distinctio deserunt architecto ut sed
+        cupiditate, nobis optio id odio maxime est officia, dolores perspiciatis
+        dolore laudantium cum ad, repudiandae perferendis fugiat.
+      </p>
+    </div>
+    <script>
+      let parrafo = document.getElementById('parrafo');
+      button = document.createElement('button');
+      button.textContent = 'Cerrar';
+      button.style.width = '50%';
+      button.style.fontSize = '2em';
+      button.style.margin = '10px 0';
+      button.style.border = '4px solid';
 
+      parrafo.addEventListener('scroll', function (ev) {
+        console.log(
+          parrafo.clientHeight +
+            ' ' +
+            parrafo.scrollHeight +
+            ' ' +
+            parrafo.scrollTop
+        );
+        if (parrafo.scrollTop >= parrafo.clientHeight) {
+          document.body.appendChild(button);
+        }
+      });
+
+      button.addEventListener('click', function () {
+        document.body.removeChild(parrafo);
+      });
+    </script>
+  </body>
+</html>
