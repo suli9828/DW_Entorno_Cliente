@@ -83,7 +83,7 @@
             ' ' +
             parrafo.scrollTop
         );
-        if (parrafo.scrollTop >= parrafo.clientHeight) {
+        if (parrafo.clientHeight + parrafo.scrollTop >= parrafo.scrollHeight) {
           document.body.appendChild(button);
         }
       });
