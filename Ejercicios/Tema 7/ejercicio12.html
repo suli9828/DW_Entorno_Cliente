@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 12</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      p {
+        font-size: 3em;
+        font-weight: bold;
+        background-color: red;
+        color: white;
+      }
+
+      button {
+        margin-top: 20px;
+        margin-left: 5em;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="http://localhost/cogeDatos.php" id="miForm">
+      <input type="text" name="usuario" id="usuario" /><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="mensaje"></div>
+    <script>
+      let formulario = document.forms[0];
+      let tUsuario = document.getElementById('usuario');
+      let cMensaje = document.getElementById('mensaje');
+      formulario.addEventListener('submit', function (ev) {
+        let exp = /^[a-zA-Z]{6,}$/;
+        if (exp.test(tUsuario.value) == false) {
+          ev.preventDefault();
+          cMensaje.innerHTML = '<p>¡ Error en formato del texto !</p>';
+        }
+      });
+    </script>
+  </body>
+</html>

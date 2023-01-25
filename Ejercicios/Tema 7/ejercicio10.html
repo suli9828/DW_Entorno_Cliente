@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 10</title>
+  </head>
+  <body>
+    <h1>Mostramos los botones de radio</h1>
+    <form action="/miPaginaForm.php">
+      <p>Introduzca género</p>
+      <input type="radio" id="masc" name="genero" value="masculino" />
+      <label for="masc">Masculino</label><br />
+      <input type="radio" id="fem" name="genero" value="femenino" />
+      <label for="fem">Femenino</label><br />
+      <input type="radio" id="otro" name="genero" value="otro" />
+      <label for="otro">Otro</label>
+    </form>
+    <script>
+      let elemento = document.querySelectorAll('[name=’genero’]');
+      for (let el of elemento) {
+        console.log(el.getAttribute('type'));
+      }
+    </script>
+  </body>
+</html>
