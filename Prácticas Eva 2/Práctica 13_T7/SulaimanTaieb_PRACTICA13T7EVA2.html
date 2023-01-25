@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 13</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      main {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding-top: 100px;
+      }
+
+      main div {
+        border: 1px solid black;
+        height: 100px;
+        width: 200px;
+        padding: 45px;
+      }
+      .arrastra {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="arrastrable" draggable="true" class="arrastra">
+        <p>Soy arrastrable</p>
+      </div>
+      <div id="destino"><p>Soy el destino</p></div>
+    </main>
+    <script>
+      /*Arriba ponemos que draggable sea "true" para que nos deje arrastrar la caja.*/
+
+      let drag = document.getElementById('arrastrable');
+
+      let destino = document.getElementById('destino');
+
+      /*Este evento ocurre mientras arrastramos la primera caja.*/
+      drag.addEventListener('drag', function () {
+        drag.style.opacity =
+          '50%'; /*Le decimos que la primera caja queremos que tenga un 50% de opacidad.*/
+      });
+
+      /* Este evento ocurre cuando arrastramos la primera caja sobre la segunda.*/
+      destino.addEventListener('dragover', function (ev) {
+        ev.preventDefault(); /* Con este evento le quitamos el comportamiento por defecto.*/
+        destino.style.backgroundColor = 'red';
+      });
+
+      /* Este evento ocurre cuando la caja arrastrable sale de su destino.*/
+      destino.addEventListener('dragleave', function () {
+        destino.style.backgroundColor = 'white';
+      });
+
+      /*Este evento ocurre cuando soltamos la caja arrastrable sobre la caja destino.*/
+      destino.addEventListener('drop', function () {
+        destino.style.backgroundColor = 'yellow';
+        destino.innerHTML = '<p>¡Lo has logrado!</p>';
+        document
+          .getElementsByTagName('main')[0]
+          .removeChild(
+            drag
+          ); /*Eliminamos la primera caja que era arrastrable.*/
+      });
+    </script>
+  </body>
+</html>
