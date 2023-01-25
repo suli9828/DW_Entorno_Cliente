@@ -14,33 +14,40 @@
       }
 
       p {
-        font-size: 3em;
+        font-size: 0.9em;
         font-weight: bold;
         background-color: red;
         color: white;
+        text-align: center;
       }
 
       button {
         margin-top: 20px;
-        margin-left: 5em;
+        margin-left: 4.3em;
       }
     </style>
   </head>
   <body>
-    <form action="http://localhost/cogeDatos.php" id="miForm">
-      <input type="text" name="usuario" id="usuario" /><br />
-      <button type="submit">Enviar</button>
-    </form>
-    <div id="mensaje"></div>
+    <div>
+      <form action="http://localhost/cogeDatos.php" id="miForm">
+        <input type="text" name="usuario" id="usuario" /><br />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
     <script>
       let formulario = document.forms[0];
       let tUsuario = document.getElementById('usuario');
-      let cMensaje = document.getElementById('mensaje');
       formulario.addEventListener('submit', function (ev) {
         let exp = /^[a-zA-Z]{6,}$/;
         if (exp.test(tUsuario.value) == false) {
           ev.preventDefault();
-          cMensaje.innerHTML = '<p>¡ Error en formato del texto !</p>';
+          if (document.getElementById('msg') == null) {
+            let msg = document.createElement('p');
+            msg.innerText = 'Error en el formato de texto.';
+            msg.id = 'msg';
+            let button = document.getElementsByTagName('button')[0];
+            formulario.insertBefore(msg, button);
+          }
         }
       });
     </script>

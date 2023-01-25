@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 14</title>
+  </head>
+  <body>
+    <form action="http://localhost/cogeDatos.php" id="miForm">
+      <input type="text" name="usuario" id="user" placeholder="Usuario" /><br />
+      <input
+        type="text"
+        name="contraseña"
+        id="paswd"
+        placeholder="Contraseña"
+      /><br />
+      <button id="userBtn">Usuario</button>
+      <button id="passwdBtn">Contraseña</button><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <script>
+      let form = document.forms[0].querySelectorAll('input');
+      for (let input of form) {
+        input.addEventListener('blur', function () {
+          console.log('Saliendo del elemento ' + this.name);
+        });
+
+        input.addEventListener('focus', function () {
+          console.log('Entrando en el elemento ' + this.name);
+        });
+      }
+
+      let userBtn = document.getElementById('userBtn');
+      userBtn.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        document.getElementById('user').focus();
+      });
+
+      let passwdBtn = document.getElementById('passwdBtn');
+      passwdBtn.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        document.getElementById('paswd').focus();
+      });
+    </script>
+  </body>
+</html>
