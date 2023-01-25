@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Ejercicio 13</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      button {
+        margin-top: 20px;
+        margin-left: 6em;
+      }
+
+      input {
+        margin: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="http://localhost/cogeDatos.php" id="miForm">
+      <input type="text" name="usuario" id="user" /><br />
+      <input type="text" name="contraseña" id="paswd" /><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <script>
+      let user = document.getElementById('user');
+      let paswd = document.getElementById('paswd');
+
+      user.addEventListener('mouseenter', function () {
+        alert('Usted ha entrado en usuario');
+      });
+
+      paswd.addEventListener('mouseenter', function () {
+        alert('Usted ha entrado en contraseña');
+      });
+
+      user.addEventListener('mouseleave', function () {
+        alert('Usted ha salido de usuario');
+      });
+
+      paswd.addEventListener('mouseleave', function () {
+        alert('Usted ha salido de contrtaseña');
+      });
+    </script>
+  </body>
+</html>
