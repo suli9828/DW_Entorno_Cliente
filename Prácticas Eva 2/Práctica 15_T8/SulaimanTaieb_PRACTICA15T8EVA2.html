@@ -1,1 +1,44 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 15</title>
+  </head>
+  <body>
+    <button id="btn">Abortar!!!</button>
+    <script>
+      function temporizador(tiempo) {
+        let promesa = new Promise((botonNoPulsado, botonPulsado) => {
+          let contador = 0;
+          /*Este intervalo suma 1 a la variable anterior cad asegundo que pasa.*/
+          let intervalo = setInterval(function () {
+            contador++;
+            /*En el intervalo, la variable aumenta y una vez que la variable es igual al tiempo introducido.*/
+            if (contador == tiempo) {
+              /*Se devuelve un mensaje que resuelve la promesa.*/
+              botonNoPulsado('Tiempo concluido');
+              clearInterval(intervalo);
+            }
+            /*El intervalo se ejecuta cada 1 segundo (1000 milisegundos)*/
+          }, 1000);
+          /*Añadimos un evento al botón que al hacer click nos devuelve un mensaje que rechaza la promesa.*/
+          document.getElementById('btn').addEventListener('click', function () {
+            botonPulsado('Acción interrumpida por el usuario');
+          });
+        })
+          /*Si la promesa ha sido resuelta nos muestra el mensaje de la promesa resuelta.*/
+          .then(function (mensaje) {
+            document.body.innerHTML = '<p>' + mensaje + '</p>';
+          })
+          /*Pero si la promesa ha sido rechazada nos muestra el mensaje de la promesa rechazada.*/
+          .catch(function (mensaje) {
+            document.body.innerHTML = '<p>' + mensaje + '</p>';
+          });
+      }
+      /*Aquí llamamos a la función del temporizador donde señalamos cuántos segundos queremos de temporizador.*/
+      temporizador(5);
+    </script>
+  </body>
+</html>
