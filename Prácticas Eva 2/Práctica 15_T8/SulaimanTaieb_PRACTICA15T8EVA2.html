@@ -7,7 +7,7 @@
     <title>Práctica 15</title>
   </head>
   <body>
-    <button id="btn">Abortar!!!</button>
+    <button id="botonAbortar">Abortar!!!</button>
     <script>
       function temporizador(tiempo) {
         let promesa = new Promise((botonNoPulsado, botonPulsado) => {
@@ -24,9 +24,11 @@
             /*El intervalo se ejecuta cada 1 segundo (1000 milisegundos)*/
           }, 1000);
           /*Añadimos un evento al botón que al hacer click nos devuelve un mensaje que rechaza la promesa.*/
-          document.getElementById('btn').addEventListener('click', function () {
-            botonPulsado('Acción interrumpida por el usuario');
-          });
+          document
+            .getElementById('botonAbortar')
+            .addEventListener('click', function () {
+              botonPulsado('Acción interrumpida por el usuario');
+            });
         })
           /*Si la promesa ha sido resuelta nos muestra el mensaje de la promesa resuelta.*/
           .then(function (mensaje) {
