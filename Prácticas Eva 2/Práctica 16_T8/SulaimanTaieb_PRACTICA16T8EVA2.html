@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 16</title>
+  </head>
+  <body>
+    <main id="pagina"></main>
+    <script type="module">
+      /* Esta función muestra las visitas que se hacen a la página.*/
+      export function visitas() {
+        var sesion = null;
+        let cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+          let [nombre, valor] = cookie.split('=');
+          /*Almacenamos el valor de la cookie en una constante.*/
+          if (nombre == 'sesion') {
+            var sesion = valor;
+          }
+        }
+        /*Le decimos que si el valor de la cookie no es "t"*/
+        if (sesion != 't') {
+          /*Que nos cree un div con una advertencia sobre el uso de cookies.*/
+          let confirm = document.createElement('div');
+          confirm.setAttribute('id', 'confirm');
+          confirm.innerHTML = '<h1>Esta página dice</h1>';
+          confirm.innerHTML +=
+            '<p>Esta página usa una cookie para almacenar el número de visitas que hace cada usuario. Si está conforme con ello, pulse Sí. De otro modo la página no realizará su labor y eliminará las cookies existentes.</p>';
+          confirm.innerHTML +=
+            '<div><button id="si">Sí</button>&nbsp;&nbsp;&nbsp;<button id="no">No</button></div>';
+          document.getElementById('pagina').appendChild(confirm);
+          /*Añadimos un evento al botón aceptar que ejecuta su función correspondiente al hacer click*/
+          document.getElementById('si').addEventListener('click', aceptar);
+          document.getElementById('no').addEventListener('click', cancelar);
+          /*Esta cookie guarda la sesión del usuario.*/
+          document.cookie = 'sesion=t; max-age=60*60*24*365';
+        } else {
+          cuentaVisitas();
+        }
+      }
+
+      /* Esta función acepta las cookies y muestra las visitas a la página.*/
+      function aceptar() {
+        /*Al pulsar en aceptar se quita el cuadro de advertencia sobre cookies.*/
+        document
+          .getElementById('pagina')
+          .removeChild(document.getElementById('confirm'));
+        /*Esta cookie guarda las visitas del usuario.*/
+        document.cookie = 'Visitas=0; max-age=60*60*24*365';
+        cuentaVisitas();
+      }
+
+      /*Esta función cancela las cookies del usuario en caso de que el usuario le dé a que no.*/
+      function cancelar() {
+        /*Se cambia el cuadro de advertencia por un mensaje diferente.*/
+        document.getElementById('confirm').innerHTML =
+          '<p>Debes aceptar las cookies para continuar.</p>';
+        /*Se borra la cookie de sesión poniéndole una fecha de expiración pasada.*/
+        document.cookie = 'sesion=f; expires=Wed, 15 Feb 2023 00:00:01 GMT';
+        console.log(document.cookie);
+      }
+
+      /*Esta función cierra la sesión cuando el usuario sale.*/
+      function cerrarSesion() {
+        /*Se borran todas las cookies poniéndoles una fecha de expiración pasada.*/
+        document.cookie = 'sesion=f; expires=Wed, 15 Feb 2023 00:00:01 GMT';
+        document.cookie = 'Visitas=0; expires=Wed, 15 Feb 2023 00:00:01 GMT';
+        /*Al cerrar la sesión se recarga la página.*/
+        location.reload();
+      }
+
+      /*Esta función cuenta las visitas que hace el usuario a la página.*/
+      function cuentaVisitas() {
+        let p = document.createElement('p');
+        p.setAttribute('id', 'p');
+        document
+          .getElementById('pagina')
+          .appendChild(
+            p
+          ); /*Creamos un párrafo vacío y lo añadimos a la página.*/
+
+        /*Creamos un botón para cerrar sesión.*/
+        let closeSession = document.createElement('button');
+        closeSession.setAttribute('id', 'cerrarSesion');
+        closeSession.innerText = 'Cerrar Sesión';
+        document.getElementById('pagina').appendChild(closeSession);
+        /*Añadimos un evento al botón "no" que ejecuta su función correspondiente al hacer click*/
+        closeSession.addEventListener('click', cerrarSesion);
+
+        /*Ahora separamos las cookies.*/
+        let cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+          /*Separamos el nombre y el valor de cada cookie, para poder buscar la cookie de "Visitas".*/
+          let [nombre, valor] = cookie.split('=');
+          if (nombre == 'Visitas') {
+            /*En el párrafo vacío que hemos creado en la función cuentaVisitas pondremos el contador.*/
+            document.getElementById('p').innerText = `${nombre}: ${valor}`;
+            valor++;
+            /*Cada vez que el usuario actualice o vuelva a entrar en la página se actualizará la cookie y aumentará su valor en 1.*/
+            document.cookie = 'Visitas=' + valor + '; max-age=60*60*24*365';
+          }
+        }
+      }
+      visitas();
+    </script>
+  </body>
+</html>
