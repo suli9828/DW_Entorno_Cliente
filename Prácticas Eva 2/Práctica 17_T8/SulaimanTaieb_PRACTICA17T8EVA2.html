@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 17</title>
+  </head>
+  <body>
+    <script type="module">
+      export function formas(ev) {
+        try {
+          /*Le decimos que al hacer en cualquier botón del ratón que se cree una forma dependiendo de los requisitos que le hayamos puesto.*/
+          if (ev.button == 0 || ev.button == 2) {
+            /*Quitamos el menú contextual que sale al darle al botón derecho del ratón.*/
+            document.oncontextmenu = function () {
+              return false;
+            };
+            let forma = document.createElement('div');
+            /*Se genera un diámetro aleatorio para las formas.*/
+            let diam = parseInt(Math.random() * 290 + 10);
+
+            forma.style.width = diam + 'px';
+
+            forma.style.height = diam + 'px';
+            /*Le ponemos posición fixed para poder insertarlo donde queramos en la pantalla.*/
+            forma.style.position = 'fixed';
+            /*Le decimos que al crearse el círculo se ponga el cursor en medio.*/
+            forma.style.top = ev.clientY - diam / 2 + 'px';
+            forma.style.left = ev.clientX - diam / 2 + 'px';
+            /*Le ponemos un color aleatorio a los circulos.*/
+            forma.style.backgroundColor =
+              'rgb(' +
+              parseInt(Math.random() * 256) +
+              ', ' +
+              parseInt(Math.random() * 256) +
+              ', ' +
+              parseInt(Math.random() * 256) +
+              ')';
+
+            /*Le decimos que al hacer click al botón derecho del ratón que se cree un círculo.*/
+            if (ev.button == 2) {
+              /*Le ponemos un radio a los bordes del div para que sea un círulo.*/
+              forma.style.borderRadius = '50%';
+            } else if (ev.button == 0) {
+              ev.preventDefault();
+            }
+
+            /*Añadimos el circulo al body.*/
+            document.body.appendChild(forma);
+          } else {
+            throw 'Botón incorrecto.';
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      document.addEventListener('mousedown', formas);
+    </script>
+  </body>
+</html>
