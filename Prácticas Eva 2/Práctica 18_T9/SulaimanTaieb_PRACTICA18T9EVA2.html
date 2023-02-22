@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 18</title>
+  </head>
+  <body>
+    <h1>Actualiza formulario con JSON</h1>
+    <form action="#" method="post"></form>
+    <script>
+      /*Llamamos a nuestro archivo JSON.*/
+      fetch('./datos.json')
+        /*Cogemos la respuesta.*/
+        .then((respuesta) => {
+          if (respuesta.ok) {
+            /*Si la respuesta no tiene errores, nos devuelve un objeto en formato JSON.*/
+            return respuesta.json();
+          } else {
+            throw new Error(
+              'Los datos no llegaron bien'
+            ); /*Y en caso de que haya algún error nos devuelva un mensaje de error.*/
+          }
+        })
+        .then((miJson) => {
+          /*Ahora pasamos el JSON a MAP.*/
+          let miArray = Object.entries(JSON.parse(JSON.stringify(miJson)));
+          let miMapa = new Map(miArray);
+          /*Cogemos el formulario del documento.*/
+          let form = document.forms[0];
+          /*Recorremos cada valor del mapa uno a uno.*/
+          for (let [nombre, valor] of miMapa) {
+            /*Creamos un label(etiqueta) y le ponemos los datos del nombre del elemento para luego mostrarlo en el formulario.*/
+            let etiqueta = document.createElement('label');
+            etiqueta.setAttribute('for', nombre);
+            etiqueta.setAttribute('id', nombre);
+            etiqueta.innerHTML = nombre + ' => ';
+            form.appendChild(etiqueta);
 
+            /*Creamos un input(campo) y le ponemos los datos del nombre y el valor del elemento para luego mostrarlo en el formulario.*/
+            let campo = document.createElement('input');
+            campo.setAttribute('type', 'text');
+            campo.setAttribute('id', nombre);
+            campo.setAttribute('value', valor);
+            form.appendChild(campo);
+
+            /*Añadimos un salto de línea detrás de cada elemento para que se muestren uno debajo del otro.*/
+            let saltoLinea = document.createElement('br');
+            form.appendChild(saltoLinea);
+          }
+        });
+    </script>
+  </body>
+</html>
