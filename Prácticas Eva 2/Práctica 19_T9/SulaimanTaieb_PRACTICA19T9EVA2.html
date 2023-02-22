@@ -1,1 +1,103 @@
+<!--He escogido que cuando se llegue al principio o al final del array, que volvamos al primer registro y al contrario.-->
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    <title>Práctica 19</title>
+    <link rel="stylesheet" href="./estilos.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1>Autorrelleno de form desde Internet</h1>
+      <form action="#" method="post">
+        <label for="userId"><p>ID Usuario:</p></label>
+        <input type="text" value="" name="userId" id="userId" />
+        <br />
+        <br />
+        <label for="id"><p>ID:</p></label>
+        <input type="text" value="" name="id" id="id" />
+        <br />
+        <br />
+        <label for="title"><p>Título:</p></label>
+        <input
+          type="text"
+          style="width: 600px"
+          value=""
+          name="title"
+          id="title"
+        />
+        <br />
+        <br />
+        <label for="body"><p>Cuerpo:</p></label>
+        <textarea name="texto" cols="80" rows="5" id="body" name="body">
+        </textarea>
+        <br /><br />
+        <div class="boton">
+          <button id="anterior">Usuario Anterior</button>
+          <button id="siguiente">Siguiente Usuario</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      /*Hacemos la petición a la página donde están almacenados los datos de los usuarios.*/
+      fetch('http://jsonplaceholder.typicode.com/posts')
+        /*Cogemos la respuesta.*/
+        .then((respuesta) => {
+          if (respuesta.ok) {
+            /*Si la respuesta no tiene errores, nos devuelve un objeto en formato JSON.*/
+            return respuesta.json();
+          } else {
+            throw new Error(
+              'Los datos no llegaron bien'
+            ); /*Y en caso de que haya algún error nos devuelva un mensaje de error.*/
+          }
+        })
+        .then((miJson) => {
+          /*Ahora pasamos el JSON a Array.*/
+          let miArray = Object.entries(JSON.parse(JSON.stringify(miJson)));
+          /*Esta varibale lo que hace es poder cambiar entre valores en el array para ir mostrando diferentes datos.*/
+          let pos = 0;
+          /*Ahora añadimos un evento al botón que servirá para ir a los datos anteriores.*/
+          document
+            .getElementById('anterior')
+            .addEventListener('click', function (ev) {
+              ev.preventDefault();
+              if (pos == 0) {
+                /*Si se detecta que pos=0 se le asigna el último valor del array, que es la longitud del array menos 1.*/
+                pos = miArray.length - 1;
+              } else {
+                pos--;
+              }
 
+              if (pos == 0) {
+                /*Si se detecta que pos=0 se le asigna el último valor del array, que es la longitud del array menos 1.*/
+              } else {
+                pos--;
+              }
+              /*Y le pedimos que muestre los datos nuevos en el formulario.*/
+              document.getElementById('userId').value = miArray[pos][1].userId;
+              document.getElementById('id').value = miArray[pos][1].id;
+              document.getElementById('title').value = miArray[pos][1].title;
+              document.getElementById('body').value = miArray[pos][1].body;
+            });
+
+          /*Ahora añadimos un evento al botón que servirá para ir a los datos siguientes.*/
+          document
+            .getElementById('siguiente')
+            .addEventListener('click', function (ev) {
+              ev.preventDefault();
+              if (pos == miArray.length - 1) {
+                /*Si se detecta que pos es el último valor del array se le asigna 0.*/
+                pos = 0;
+              } else {
+                pos++;
+              }
+              /*Y le pedimos que muestre los datos nuevos en el formulario.*/
+              document.getElementById('userId').value = miArray[pos][1].userId;
+              document.getElementById('id').value = miArray[pos][1].id;
+              document.getElementById('title').value = miArray[pos][1].title;
+              document.getElementById('body').value = miArray[pos][1].body;
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.main {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(115, 178, 238);
+  display: grid;
+  place-items: center;
+}
+
+h1 {
+  font-size: 3em;
+  text-decoration: underline;
+}
+
+form {
+  margin-top: -150px;
+}
+
+label {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+input {
+  font-size: 1.2em;
+}
+
+input {
+  width: 150px;
+  height: 30px;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 10px;
+  background: #ff5e00;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+div.boton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+button#anterior {
+  justify-self: start;
+}
+
+button#siguiente {
+  justify-self: end;
+}
